@@ -1,0 +1,14 @@
+{
+  "name": "api-coursework",
+  "version": "1.0.0",
+  "description": "API coursework plymouth final year",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lahiru Dananjaya Sudasinghe",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
