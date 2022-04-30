@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL, {});
+mongoose.connect(URL);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
