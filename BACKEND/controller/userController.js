@@ -1,4 +1,5 @@
 const User = require("../model/userModel");
+const bcrypt = require("bcrypt");
 
 userController = {
   register: async (req, res) => {
@@ -30,12 +31,15 @@ userController = {
       )
         return res.status(400).json({ msg: "Please fill in all fields." });
 
+      // validate NID
       if (!validateNid(nid))
         return res.status(400).json({ msg: "Invalid NID." });
 
+      //validate email
       if (!validateEmail(email))
         return res.status(400).json({ msg: "Invalid email." });
 
+      // check if nid exsist
       const user = await User.findOne({ nid });
       if (user) return res.status(400).json({ msg: "This NID already exist." });
 
@@ -44,11 +48,14 @@ userController = {
           .status(400)
           .json({ msg: "Password must have at least 6 characters." });
 
+      // used bcrypt to encrypt password
+      const passwordHash = await bcrypt.hash(password, 12);
+
       const newUser = new User({
         name,
         nid,
         email,
-        password,
+        password: passwordHash,
         age,
         address,
         latitude,
@@ -64,8 +71,26 @@ userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
+  login: async (req, res) => {
+    try {
+      const { nid, password } = req.body;
+      const user = await User.findOne({ nid });
+      if (!user)
+        return res.status(400).json({ msg: "This NID doesn'n exist." });
+
+      // decrypt and match password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) return res.status(400).json({ msg: "Password incorrect." });
+
+      res.json({ msg: "Login success!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
+//------------------------------------functions----------------------------------------->
 //email validation
 function validateEmail(email) {
   var re =
@@ -73,6 +98,7 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
+//nid validation
 function validateNid(nid) {
   var re =
     /^(?:19|20)?\d{2}(?:[0-35-8]\d\d(?<!(?:000|500|36[7-9]|3[7-9]\d|86[7-9]|8[7-9]\d)))\d{4}(?:[vVxX])$/;
