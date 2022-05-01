@@ -52,10 +52,6 @@ const userSchema = new Schema(
       type: String,
       default: " ",
     },
-    profession: {
-      type: String,
-      default: " ",
-    },
     qualifications: {
       type: String,
       default: " ",
