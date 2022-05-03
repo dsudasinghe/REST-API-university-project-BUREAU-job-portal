@@ -88,6 +88,26 @@ userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
+  getAllUserInfo: async (req, res) => {
+    try {
+      const users = await User.find().select("-password");
+      res.json({ users });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getUserInfo: async (req, res) => {
+    try {
+      const user = await User.findOne({ nid: req.params.nid }).select(
+        "-password"
+      );
+      res.json(user);
+    } catch (err) {
+      return res.status(400).json({ msg: err.message });
+    }
+  },
 };
 
 //------------------------------------functions----------------------------------------->

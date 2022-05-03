@@ -52,13 +52,15 @@ const userSchema = new Schema(
       type: String,
       default: " ",
     },
-    qualifications: {
-      type: String,
-      default: " ",
-    },
+    qualifications: [
+      {
+        type: String,
+        default: " ",
+      },
+    ],
     certificates: {
       type: String,
-      default: " ",
+      default: "",
     },
   },
   {
