@@ -25,6 +25,9 @@ connection.once("open", () => {
 const userRouter = require("./routes/userRouter");
 app.use("/user", userRouter);
 
+const feedbackRouter = require("./routes/feedbackRoutes");
+app.use("/feedback", feedbackRouter);
+
 app.listen(PORT, () => {
   console.log(`Server Running on PORT ${PORT}`);
 });

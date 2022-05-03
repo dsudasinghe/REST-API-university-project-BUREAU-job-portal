@@ -40,7 +40,7 @@ userController = {
         return res.status(400).json({ msg: "Invalid email." });
 
       // check if nid exsist
-      const user = await User.findOne({ nid });
+      const user = await User.findById(nid);
       if (user) return res.status(400).json({ msg: "This NID already exist." });
 
       if (password.length < 6)
@@ -53,7 +53,7 @@ userController = {
 
       const newUser = new User({
         name,
-        nid,
+        _id: nid,
         email,
         password: passwordHash,
         age,
@@ -75,9 +75,9 @@ userController = {
   login: async (req, res) => {
     try {
       const { nid, password } = req.body;
-      const user = await User.findOne({ nid });
+      const user = await User.findById(nid);
       if (!user)
-        return res.status(400).json({ msg: "This NID doesn'n exist." });
+        return res.status(400).json({ msg: "This NID doesn't exist." });
 
       // decrypt and match password
       const isMatch = await bcrypt.compare(password, user.password);
@@ -100,12 +100,60 @@ userController = {
 
   getUserInfo: async (req, res) => {
     try {
-      const user = await User.findOne({ nid: req.params.nid }).select(
+      const user = await User.findOne({ _id: req.params.nid }).select(
         "-password"
       );
+      if (!user) return res.status(400).json({ msg: "User not found!" });
       res.json(user);
     } catch (err) {
       return res.status(400).json({ msg: err.message });
+    }
+  },
+
+  deleteUser: async (req, res) => {
+    try {
+      const user = await User.findByIdAndDelete(req.params.nid);
+      if (!user) return res.status(400).json({ msg: "Invalid operation" });
+      res.json({ msg: "Delete succussful!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  qualification: async (req, res) => {
+    try {
+      const user = await User.find({
+        qualifications: req.params.qualification,
+      }).select("-password -role");
+      if (!user) return res.status(400).json({ msg: "No users found!" });
+      res.json(user);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getContact: async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.params.nid }).select("email");
+      if (!user) return res.status(400).json({ msg: "Contact not found!" });
+      res.json(user);
+    } catch (err) {
+      return res.status(400).json({ msg: err.message });
+    }
+  },
+
+  verifyUser: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.nid },
+        {
+          verified: true,
+        }
+      );
+      if (!user) return res.status(400).json({ msg: "verification failed!" });
+      res.json({ msg: "User successfully verified!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
     }
   },
 };
