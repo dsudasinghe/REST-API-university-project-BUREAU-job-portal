@@ -7,7 +7,10 @@ import Header from './components/Header';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Validation from './components/Validation';
+import Qualifications from './components/Qualifications';
 import ViewInfo from './components/ViewInfo';
+import CitizenHome from './components/CitizenHome';
+import Complaints from './components/Complaints';
 // import AboutUs from './components/AboutUs';
 // import ContactUs from './components/ContactUs';
 // import Landing from './components/Landing';
@@ -33,8 +36,12 @@ function App() {
           <Route exact path='/patientsignin' element ={<SignInPatient/>} /> */}
           <Route exact path='/login' element ={<Login/>} />
           <Route exact path='/signup' element ={<SignUp/>} />
+          <Route exact path='/qualifications' element ={<Qualifications/>} />
+          <Route exact path='/complaints' element ={<Complaints/>} />
           <Route exact path='/validation' element ={<Validation/>} />
           <Route exact path='/viewinfo' element ={<ViewInfo/>} />
+          <Route exact path='/citizen' element ={<CitizenHome/>} />
+
 
 
           {/* <Route exact path='/doctorsignin' element ={<SignInDoctor/>} />
@@ -51,4 +58,5 @@ function App() {
 }
 
 export default App;
+
 
