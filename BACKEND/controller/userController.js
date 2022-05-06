@@ -1,5 +1,6 @@
 const User = require("../model/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 userController = {
   register: async (req, res) => {
@@ -83,7 +84,41 @@ userController = {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) return res.status(400).json({ msg: "Password incorrect." });
 
+      const refresh_token = createRefreshToken({ nid: user._id });
+
+      res.cookie("refreshtoken", refresh_token, {
+        httpOnly: true,
+        path: "/user/refresh_token",
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
+      });
+
       res.json({ msg: "Login success!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getAccessToken: (req, res) => {
+    try {
+      const rf_token = req.cookies.refreshtoken;
+      if (!rf_token) return res.status(400).json({ msg: "Please login now!" });
+
+      jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.status(400).json({ msg: "Please login now!" });
+
+        const access_token = createAccessToken({ nid: user.nid });
+        res.json({ access_token });
+        //console.log(user.nid);
+      });
+    } catch (err) {
+      return err.status(500).json({ msg: err.message });
+    }
+  },
+
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("refreshtoken", { path: "/user/refresh_token" });
+      return res.json({ msg: "Logged out." });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -172,5 +207,17 @@ function validateNid(nid) {
     /^(?:19|20)?\d{2}(?:[0-35-8]\d\d(?<!(?:000|500|36[7-9]|3[7-9]\d|86[7-9]|8[7-9]\d)))\d{4}(?:[vVxX])$/;
   return re.test(String(nid).toLowerCase());
 }
+
+const createAccessToken = (payload) => {
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "15m",
+  });
+};
+
+const createRefreshToken = (payload) => {
+  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: "7d",
+  });
+};
 
 module.exports = userController;

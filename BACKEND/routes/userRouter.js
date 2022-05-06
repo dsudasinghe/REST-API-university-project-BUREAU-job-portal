@@ -1,11 +1,16 @@
 const router = require("express").Router();
 const userController = require("../controller/userController");
+const auth = require("../middleware/auth");
 
 router.post("/register", userController.register);
 
 router.post("/login", userController.login);
 
-router.get("/all_info", userController.getAllUserInfo);
+router.post("/refresh_token", userController.getAccessToken);
+
+router.get("/logout", userController.logout);
+
+router.get("/all_info", auth, userController.getAllUserInfo);
 
 router.get("/info/:nid", userController.getUserInfo);
 
