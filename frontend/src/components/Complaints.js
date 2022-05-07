@@ -1,53 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Form } from "react-bootstrap";
 
 function Complaints() {
   return (
     <div class="container">
       <div>
-        <div class="mb-3">
-          <label for="formGroupExampleInput" class="form-label">
-            Example label
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Example input placeholder"
-          ></input>
-        </div>
-        <div class="mb-3">
-          <label for="formGroupExampleInput2" class="form-label">
-            Another label
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput2"
-            placeholder="Another input placeholder"
-          ></input>
-        </div>
-        {/* <div>
-          <div class="form-floating">
-            <textarea
-              class="form-control"
-              placeholder="Leave a comment here"
-              id="floatingTextarea2"
-              style="height: 100px"
-            ></textarea>
-            <label for="floatingTextarea2">Comments</label>
-          </div>
-        </div> */}
-
-        <div class="form-floating" style={{paddingBottom: '50px'}} >
-          
-          <textarea
-            class="form-control"
-            placeholder="Leave a comment here"
-            id="floatingTextarea"
-          ></textarea>
-          <label for="floatingTextarea">Comments</label>
-        </div>
+        <h3>Complaints</h3>
+        <Form>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Complaint</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+        </Form>
 
         <input
           class="btn btn-primary"

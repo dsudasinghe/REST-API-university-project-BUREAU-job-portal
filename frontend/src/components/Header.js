@@ -15,6 +15,7 @@ function Header (){
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
               <a class="nav-link" href="#"><Link to="/citizen">Citizen</Link></a>
+              <a class="nav-link" href="#"><Link to="/admin">Admin</Link></a>
               <a class="nav-link" href="#"><Link to="/qualifications">Qualifications</Link></a>
               <a class="nav-link" href="#"><Link to="/complaints">Complaints</Link></a>
               <a class="nav-link" href="#"><Link to="/validation">Validate</Link></a>

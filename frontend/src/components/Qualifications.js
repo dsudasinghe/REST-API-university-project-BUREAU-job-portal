@@ -11,20 +11,21 @@ function Qualifications (){
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Qualifications"></input>
                 </div>
                 <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Upload Birth Certificates</label>
-                    <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"></input>
+                <label for="formGroupExampleInput" class="form-label">Longitude</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Longitude"></input>
                 </div>
                 <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Upload CV</label>
-                    <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"></input>
+                <label for="formGroupExampleInput" class="form-label">Latitude</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Latitude"></input>
                 </div>
                 <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Upload Copies of passport</label>
-                    <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"></input>
+                <label for="formGroupExampleInput2" class="form-label">Certificates - Passport, Birth Certificate, CV</label>
+                    <input type="file" multiple class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"></input>
                 </div>
+               
 
-                <input class="btn btn-primary" style={{align:"center"}} type="submit" value="Submit"></input>
-
+                <input class="btn btn-primary" style={{align:"center"}} type="submit" value="Update"></input>
+           
                 
             </div>
         </div>
