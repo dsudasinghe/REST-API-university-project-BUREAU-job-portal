@@ -22,11 +22,16 @@ router.delete("/delete/:nid", auth, authAdmin, userController.deleteUser);
 router.put(
   "/update",
   auth,
-  upload.single("certificates"),
+  upload.array("certificates[]"),
   userController.updateUser
 );
 
-router.get("/:qualification", auth, userController.qualification);
+router.get(
+  "/:qualification",
+  auth,
+  authRecruiter,
+  userController.qualification
+);
 
 router.get("/:nid/contact", auth, userController.getContact);
 

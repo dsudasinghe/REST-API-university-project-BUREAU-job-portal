@@ -15,6 +15,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/docUploads", express.static("docUploads"));
 
 const URL = process.env.MONGODB_URL;
 

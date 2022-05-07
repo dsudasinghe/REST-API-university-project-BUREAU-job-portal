@@ -148,7 +148,16 @@ userController = {
   updateUser: async (req, res) => {
     try {
       const { qualifications, latitude, longitude } = req.body;
-      const certificates = req.file.path;
+      let path = "";
+      if (req.files) {
+        req.files.forEach(function (files, index, arr) {
+          path = path + files.path + ",";
+        });
+        path = path.substring(0, path.lastIndexOf(","));
+      }
+
+      const certificates = path;
+
       console.log(req.body);
       await User.findOneAndUpdate(
         { _id: req.user.nid },

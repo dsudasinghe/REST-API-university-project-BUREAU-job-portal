@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const feedbackController = require("../controller/feedbackController");
+const auth = require("../middleware/auth");
 
-router.post("/add", feedbackController.addFeedback);
+router.post("/add", auth, feedbackController.addFeedback);
 
 router.put("/reply/:id", feedbackController.sendReply);
 

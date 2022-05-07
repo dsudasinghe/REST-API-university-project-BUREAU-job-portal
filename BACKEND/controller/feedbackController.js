@@ -3,10 +3,10 @@ const Feedbacks = require("../model/feedbackModel");
 const feedbackController = {
   addFeedback: async (req, res) => {
     try {
-      const { userId, feedback } = req.body;
+      const { feedback } = req.body;
 
       const newFeedback = new Feedbacks({
-        userId,
+        userId: req.user.nid,
         feedback,
       });
 
