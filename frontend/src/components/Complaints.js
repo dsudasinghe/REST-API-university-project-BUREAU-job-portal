@@ -39,6 +39,16 @@ function Complaints() {
           </div>
         </div> */}
 
+        <div class="form-floating" style={{paddingBottom: '50px'}} >
+          
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea"
+          ></textarea>
+          <label for="floatingTextarea">Comments</label>
+        </div>
+
         <input
           class="btn btn-primary"
           style={{ align: "center" }}
