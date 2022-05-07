@@ -14,6 +14,9 @@ function Header (){
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style={ { flex: 1, flexDirection: 'row', justifyContent: 'right', alignItems: 'right' } }>
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#"><Link to="/citizen">Citizen</Link></a>
+              <a class="nav-link" href="#"><Link to="/qualifications">Qualifications</Link></a>
+              <a class="nav-link" href="#"><Link to="/complaints">Complaints</Link></a>
               <a class="nav-link" href="#"><Link to="/validation">Validate</Link></a>
               <a class="nav-link" href="#"><Link to="/login">Sign In</Link></a>
               <a class="nav-link" href="#"><Link to="/signup">Sign Up</Link></a>
