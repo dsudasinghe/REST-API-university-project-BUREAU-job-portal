@@ -11,6 +11,7 @@ import Qualifications from './components/Qualifications';
 import ViewInfo from './components/ViewInfo';
 import CitizenHome from './components/CitizenHome';
 import Complaints from './components/Complaints';
+import AdminHome from './components/AdminHome';
 // import AboutUs from './components/AboutUs';
 // import ContactUs from './components/ContactUs';
 // import Landing from './components/Landing';
@@ -41,6 +42,8 @@ function App() {
           <Route exact path='/validation' element ={<Validation/>} />
           <Route exact path='/viewinfo' element ={<ViewInfo/>} />
           <Route exact path='/citizen' element ={<CitizenHome/>} />
+          <Route exact path='/admin' element ={<AdminHome/>} />
+
 
 
 

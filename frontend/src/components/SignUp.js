@@ -102,7 +102,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="nicnumber"
-                  label="NIC number"
+                  label="NIC Number"
                   id="nicnumber"
                   autoComplete="nic-number"
                 />
@@ -171,7 +171,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="latitude"
-                  label="Latitude"
+                  label="Latitude (User Location)"
                   type="string"
                   id="latitude"
                   autoComplete="latitude"
@@ -183,7 +183,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="longitude"
-                  label="Longitude"
+                  label="Longitude  (User Location)"
                   type="string"
                   id="longitude"
                   autoComplete="longitude"
