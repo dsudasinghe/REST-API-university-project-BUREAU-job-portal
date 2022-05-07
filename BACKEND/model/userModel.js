@@ -24,32 +24,32 @@ const userSchema = new Schema({
   },
   age: {
     type: String,
-    default: " ",
+    default: "",
   },
   address: {
     type: String,
-    default: " ",
+    default: "",
   },
   latitude: {
     type: String,
-    default: " ",
+    default: "",
   },
   longitude: {
     type: String,
-    default: " ",
+    default: "",
   },
   profession: {
     type: String,
-    default: " ",
+    default: "",
   },
   affiliation: {
     type: String,
-    default: " ",
+    default: "",
   },
   qualifications: [
     {
       type: String,
-      default: " ",
+      default: "",
     },
   ],
   certificates: {

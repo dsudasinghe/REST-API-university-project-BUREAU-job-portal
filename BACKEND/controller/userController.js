@@ -145,6 +145,26 @@ userController = {
     }
   },
 
+  updateUser: async (req, res) => {
+    try {
+      const { qualifications, latitude, longitude } = req.body;
+      const certificates = req.file.path;
+      console.log(req.body);
+      await User.findOneAndUpdate(
+        { _id: req.user.nid },
+        {
+          qualifications,
+          latitude,
+          longitude,
+          certificates,
+        }
+      );
+      res.json({ msg: "User successfully updated!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
   deleteUser: async (req, res) => {
     try {
       const user = await User.findByIdAndDelete(req.params.nid);
