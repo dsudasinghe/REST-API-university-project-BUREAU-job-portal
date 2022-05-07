@@ -46,12 +46,12 @@ function CitizenHome() {
         <div class="col-sm-6" style={{paddingTop: '50px'}}>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Update your current location</h5>
+              <h5 class="card-title">Update Details</h5>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/complaints" class="btn btn-primary">
+              <a href="/qualifications" class="btn btn-primary">
                 Update
               </a>
             </div>

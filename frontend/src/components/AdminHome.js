@@ -23,7 +23,7 @@ function AdminHome() {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/qualifications" class="btn btn-primary">
+              <a href="/validate" class="btn btn-primary">
                 Validate 
               </a>
             </div>
@@ -37,7 +37,7 @@ function AdminHome() {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/complaints" class="btn btn-primary">
+              <a href="/viewcomplaints" class="btn btn-primary">
                 View
               </a>
             </div>
@@ -46,12 +46,12 @@ function AdminHome() {
         <div class="col-sm-6" style={{paddingTop: '50px'}}>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">User Contact Details</h5>
+              <h5 class="card-title">Search Contact Details</h5>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/complaints" class="btn btn-primary">
+              <a href="/conatct" class="btn btn-primary">
                 View
               </a>
             </div>

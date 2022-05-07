@@ -12,6 +12,8 @@ import ViewInfo from './components/ViewInfo';
 import CitizenHome from './components/CitizenHome';
 import Complaints from './components/Complaints';
 import AdminHome from './components/AdminHome';
+import Contatcts from './components/Contacts';
+import ViewComplaint from './components/ViewCoplaints';
 // import AboutUs from './components/AboutUs';
 // import ContactUs from './components/ContactUs';
 // import Landing from './components/Landing';
@@ -43,6 +45,10 @@ function App() {
           <Route exact path='/viewinfo' element ={<ViewInfo/>} />
           <Route exact path='/citizen' element ={<CitizenHome/>} />
           <Route exact path='/admin' element ={<AdminHome/>} />
+          <Route exact path='/contacts' element ={<Contatcts/>} />
+          <Route exact path='/viewcomplaints' element ={<ViewComplaint/>} />
+
+
 
 
 
