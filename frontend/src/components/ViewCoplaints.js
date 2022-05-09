@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-function Validation() {
+function ViewComplaint() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -54,23 +54,11 @@ function Validation() {
                     variant="h6"
                     component="h2"
                   >
-                    User Information
+                    Complaint Details
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <ListGroup variant="flush">
-                      <ListGroup.Item>User Id - 5555</ListGroup.Item>
-                      <ListGroup.Item>Email - user@gmail.com</ListGroup.Item>
-                      <ListGroup.Item>Age - 20</ListGroup.Item>
-                      <ListGroup.Item>Adress- Longitude - </ListGroup.Item>
-                      <ListGroup.Item>Adress- Latutude - </ListGroup.Item>
-                      <ListGroup.Item>Profession - </ListGroup.Item>
-                      <ListGroup.Item>Affiliation - </ListGroup.Item>
-
-                      <ListGroup.Item>Qualifications - </ListGroup.Item>
-                      <ListGroup.Item>Certificates -</ListGroup.Item>
-                    </ListGroup>
-                    <Button class="btn btn-primary">Delete</Button>
-                    <Button class="btn btn-primary">Validate</Button>
+                   
+                    
                   </Typography>
                 </Box>
               </Modal>
@@ -84,4 +72,4 @@ function Validation() {
   );
 }
 
-export default Validation;
+export default ViewComplaint;

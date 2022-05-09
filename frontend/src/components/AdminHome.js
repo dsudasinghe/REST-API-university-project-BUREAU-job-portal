@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useCallback } from "react";
 import { textAlign } from "@mui/system";
 
-function CitizenHome() {
+function AdminHome() {
   return (
     <div class="container">
       <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '35vh'}}>
@@ -18,13 +18,13 @@ function CitizenHome() {
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Qualifications here</h5>
+              <h5 class="card-title">Validate Users</h5>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/qualifications" class="btn btn-primary">
-                Add Qualifications
+              <a href="/validate" class="btn btn-primary">
+                Validate 
               </a>
             </div>
           </div>
@@ -32,13 +32,13 @@ function CitizenHome() {
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Make your complaints here</h5>
+              <h5 class="card-title">View complaints</h5>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/complaints" class="btn btn-primary">
-                Make your complaints here
+              <a href="/viewcomplaints" class="btn btn-primary">
+                View
               </a>
             </div>
           </div>
@@ -46,13 +46,13 @@ function CitizenHome() {
         <div class="col-sm-6" style={{paddingTop: '50px'}}>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Update Details</h5>
+              <h5 class="card-title">Search Contact Details</h5>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/qualifications" class="btn btn-primary">
-                Update
+              <a href="/conatct" class="btn btn-primary">
+                View
               </a>
             </div>
           </div>
@@ -62,4 +62,4 @@ function CitizenHome() {
   );
 }
 
-export default CitizenHome;
+export default AdminHome;
