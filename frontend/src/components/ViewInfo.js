@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { ListGroup } from "react-bootstrap";
+import axios from "axios";
 
 const style = {
   position: "absolute",
@@ -22,6 +23,23 @@ function ViewInfo() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    function getUsers() {
+      axios
+        .get("http://localhost:5000/user/all_info/")
+        .then((res) => {
+          console.log(res.data);
+          setUsers(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+    getUsers();
+  }, []);
 
   return (
     <div className="container">

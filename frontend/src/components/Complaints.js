@@ -10,6 +10,7 @@ function Complaints() {
     const complaints = {
       complaint,
     };
+    console.log(complaint)
     axios
       .put("http://localhost:5000/user/user_feedbacks/:userId", complaints)
       .then(() => {

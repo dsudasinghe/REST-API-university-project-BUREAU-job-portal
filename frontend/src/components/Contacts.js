@@ -1,8 +1,27 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { Form, FormControl } from "react-bootstrap";
+import axios from "axios";
+
 
 function Contatcts() {
+
+  const [userContacts, setUserContacts] = useState([]);
+
+  useEffect(() => {
+    function getUsers() {
+      axios
+        .get("http://localhost:5000/user/:nid/contact")
+        .then((res) => {
+          console.log(res.data);
+          setUserContacts(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+    getUsers();
+  }, []);
   return (
     <div className="container">
       <h1>User Contacts Details</h1>

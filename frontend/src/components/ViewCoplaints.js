@@ -1,8 +1,10 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import axios from "axios";
+
 import { ListGroup } from "react-bootstrap";
 
 const style = {
@@ -22,6 +24,23 @@ function ViewComplaint() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [complaint, setComplaints] = useState([]);
+
+  useEffect(() => {
+    function getComplaints() {
+      axios
+        .get("http://localhost:5000/")
+        .then((res) => {
+          console.log(res.data);
+          setComplaints(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+    getComplaints();
+  }, []);
 
   return (
     <div className="container">
