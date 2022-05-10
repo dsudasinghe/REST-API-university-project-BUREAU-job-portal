@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback, useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,22 +14,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 export default function SignIn() {
+
+  const [nid, setNid] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -40,14 +31,14 @@ export default function SignIn() {
 
     let body = {
      
-      nid : "990251460v",
-      password : "admin123",
+      nid ,
+      password ,
       
       
     }
 
     const result = await axios.post("http://localhost:5000/user/login", body)
-    console.log(result.data.refresh_token)
+    // console.log(result.data.refresh_token)
 
 
     window.sessionStorage.setItem("refresh_token", result.data.refresh_token);
@@ -78,7 +69,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -90,6 +81,9 @@ export default function SignIn() {
               name="nid"
               autoComplete="nid"
               autoFocus
+              onChange={(e) => {
+                setNid(e.target.value);
+              }}
             />
             <TextField
               margin="normal"
@@ -100,10 +94,9 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <Button
               type="submit"
@@ -114,11 +107,11 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}

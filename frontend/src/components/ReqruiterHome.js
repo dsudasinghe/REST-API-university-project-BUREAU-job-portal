@@ -23,7 +23,7 @@ function ReqruiterHome() {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/validate" className="btn btn-primary">
+              <a href="/searchqualifications" className="btn btn-primary">
                 Search 
               </a>
             </div>
@@ -37,7 +37,7 @@ function ReqruiterHome() {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="/viewcomplaints" className="btn btn-primary">
+              <a href="/viewinfo" className="btn btn-primary">
                 View
               </a>
             </div>

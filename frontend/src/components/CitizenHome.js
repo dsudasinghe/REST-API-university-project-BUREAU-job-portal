@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-import React, { useCallback } from "react";
-import { textAlign } from "@mui/system";
+import React, { } from "react";
+
 
 function CitizenHome() {
   return (
     <div className="container">
       <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '35vh'}}>
         <div className="card-body">
-          <h5 className="card-title">Welcome Mr. Dilan Ranawaka</h5>
+          <h5 className="card-title">Welcome</h5>
           <p className="card-text">
             With supporting text below as a natural lead-in to additional
             content.

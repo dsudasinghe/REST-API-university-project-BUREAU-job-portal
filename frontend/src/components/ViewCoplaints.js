@@ -25,6 +25,7 @@ function ViewComplaint() {
 
   return (
     <div className="container">
+      <h1>User Complaints and Feedbacks</h1>
       <table className="table table-hover">
         <thead>
           <tr>
@@ -56,10 +57,10 @@ function ViewComplaint() {
                   >
                     Complaint Details
                   </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                   
-                    
-                  </Typography>
+                  <Typography
+                    id="modal-modal-description"
+                    sx={{ mt: 2 }}
+                  ></Typography>
                 </Box>
               </Modal>
             </td>

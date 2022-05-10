@@ -25,6 +25,7 @@ function Validation() {
 
   return (
     <div className="container">
+      <h1>User Validation</h1>
       <table className="table table-hover">
         <thead>
           <tr>
