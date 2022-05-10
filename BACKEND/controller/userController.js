@@ -198,7 +198,9 @@ userController = {
 
   getContact: async (req, res) => {
     try {
-      const user = await User.findOne({ _id: req.params.nid }).select("email");
+      const user = await User.findOne({ _id: req.params.nid }).select(
+        "email name"
+      );
       if (!user) return res.status(400).json({ msg: "Contact not found!" });
       res.json(user);
     } catch (err) {
