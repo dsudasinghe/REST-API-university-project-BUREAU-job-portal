@@ -17,7 +17,12 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import axios from 'axios'
+import MapPicker from 'react-google-map-picker'
+import { Row } from "react-bootstrap";
 
+
+const DefaultLocation = { lat: 10, lng: 106 };
+const DefaultZoom = 10;
 
 function Copyright(props) {
   return (
@@ -50,7 +55,7 @@ export default function SignUp() {
   // const [affiliation, setAffiliation] = useState("");
 
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -60,21 +65,39 @@ export default function SignUp() {
 
     });
     let body = {
-      name : "din",
-      nid : "990980950v",
-      email :"dilan@gmail.com",
-      password : "dilan123",
-      age : "20",
-      address :"Galle",
-      latitude :"10",
-      longitude:"20",
-      profession :"ddd",
-      affiliation :"dd",
+      name: "din",
+      nid: "990980950v",
+      email: "dilan@gmail.com",
+      password: "dilan123",
+      age: "20",
+      address: "Galle",
+      latitude: "10",
+      longitude: "20",
+      profession: "ddd",
+      affiliation: "dd",
     }
 
     const result = await axios.post("http://localhost:5000/user/register", body)
     console.log(result)
   };
+
+  const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
+
+  const [location, setLocation] = useState(defaultLocation);
+  const [zoom, setZoom] = useState(DefaultZoom);
+
+  function handleChangeLocation(lat, lng) {
+    setLocation({ lat: lat, lng: lng });
+  }
+
+  function handleChangeZoom(newZoom) {
+    setZoom(newZoom);
+  }
+
+  function handleResetLocation() {
+    setDefaultLocation({ ...DefaultLocation });
+    setZoom(DefaultZoom);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -96,7 +119,7 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-             
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -178,27 +201,29 @@ export default function SignUp() {
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="latitude"
-                  label="Latitude (User Location)"
-                  type="string"
-                  id="latitude"
-                  autoComplete="latitude"
-                />
-              </Grid>
+               
+              <div>
+                <>
+                  <MapPicker defaultLocation={defaultLocation}
+                    zoom={zoom}
+                    mapTypeId="roadmap"
+                    style={{ height: '700px' }}
+                    onChangeLocation={handleChangeLocation}
+                    onChangeZoom={handleChangeZoom}
+                    apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8' />
+                </>
+              </div>
+              <div>
 
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="longitude"
-                  label="Longitude  (User Location)"
-                  type="string"
-                  id="longitude"
-                  autoComplete="longitude"
-                />
+                  <Row>
+                  <label>Latitute:</label><input type='text' value={location.lat} disabled />
+                  <label>Longitute:</label><input type='text' value={location.lng} disabled />
+                  <button onClick={handleResetLocation}>Reset </button>
+                  
+                  </Row>
+                  </div>
+              
+            
               </Grid>
 
               {/* <Grid item xs={12}>
@@ -216,8 +241,8 @@ export default function SignUp() {
                 </RadioGroup>
               </FormControl>
               </Grid> */}
-               
-               <Grid item xs={12}>
+
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -276,12 +301,12 @@ export default function SignUp() {
                 <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
-                
+
               </Grid>
             </Grid>
           </Box>
         </Box>
-        
+
       </Container>
     </ThemeProvider>
   );
