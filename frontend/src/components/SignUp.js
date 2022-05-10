@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback, useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +16,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import axios from 'axios'
+
 
 function Copyright(props) {
   return (
@@ -32,15 +34,46 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+
+
 export default function SignUp() {
-  const handleSubmit = (event) => {
+
+  // const [name, setName] = useState("");
+  // const [nid, setNid] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [age, setAge] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [latitude, setLatitude] = useState("");
+  // const [longitude, setLongitude] = useState("");
+  // const [profession, setProfession] = useState("");
+  // const [affiliation, setAffiliation] = useState("");
+
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+
     });
+    let body = {
+      name : "din",
+      nid : "990980950v",
+      email :"dilan@gmail.com",
+      password : "dilan123",
+      age : "20",
+      address :"Galle",
+      latitude :"10",
+      longitude:"20",
+      profession :"ddd",
+      affiliation :"dd",
+    }
+
+    const result = await axios.post("http://localhost:5000/user/register", body)
+    console.log(result)
   };
 
   return (
@@ -63,29 +96,7 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid> */}
-
+             
               <Grid item xs={12}>
                 <TextField
                   required
@@ -102,7 +113,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="nicnumber"
-                  label="NIC number"
+                  label="NIC Number"
                   id="nicnumber"
                   autoComplete="nic-number"
                 />
@@ -171,7 +182,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="latitude"
-                  label="Latitude"
+                  label="Latitude (User Location)"
                   type="string"
                   id="latitude"
                   autoComplete="latitude"
@@ -183,7 +194,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="longitude"
-                  label="Longitude"
+                  label="Longitude  (User Location)"
                   type="string"
                   id="longitude"
                   autoComplete="longitude"

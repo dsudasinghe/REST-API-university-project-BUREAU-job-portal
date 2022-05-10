@@ -9,7 +9,7 @@ router.post("/register", userController.register);
 
 router.post("/login", userController.login);
 
-router.post("/refresh_token", userController.getAccessToken);
+router.get("/refresh_token", userController.getAccessToken);
 
 router.get("/logout", userController.logout);
 
