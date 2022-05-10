@@ -24,8 +24,8 @@ function ViewComplaint() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div class="container">
-      <table class="table table-hover">
+    <div className="container">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">Job Seeker Name</th>
@@ -39,7 +39,7 @@ function ViewComplaint() {
             <th scope="row">test</th>
             <td>
               {" "}
-              <Button class="btn btn-primary" onClick={handleOpen}>
+              <Button className="btn btn-primary" onClick={handleOpen}>
                 View
               </Button>
               <Modal
