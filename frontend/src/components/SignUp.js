@@ -21,7 +21,7 @@ import MapPicker from 'react-google-map-picker'
 import { Row } from "react-bootstrap";
 
 
-const DefaultLocation = { lat: 10, lng: 106 };
+const DefaultLocation = { lat: 6.899079665221141, lng: 79.92616863498765 };
 const DefaultZoom = 10;
 
 function Copyright(props) {
