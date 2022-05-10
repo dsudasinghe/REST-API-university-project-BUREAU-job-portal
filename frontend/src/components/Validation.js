@@ -24,8 +24,8 @@ function Validation() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div class="container">
-      <table class="table table-hover">
+    <div className="container">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">Job Seeker Name</th>
@@ -39,7 +39,7 @@ function Validation() {
             <th scope="row">test</th>
             <td>
               {" "}
-              <Button class="btn btn-primary" onClick={handleOpen}>
+              <Button className="btn btn-primary" onClick={handleOpen}>
                 View
               </Button>
               <Modal
@@ -69,8 +69,8 @@ function Validation() {
                       <ListGroup.Item>Qualifications - </ListGroup.Item>
                       <ListGroup.Item>Certificates -</ListGroup.Item>
                     </ListGroup>
-                    <Button class="btn btn-primary">Delete</Button>
-                    <Button class="btn btn-primary">Validate</Button>
+                    <Button className="btn btn-primary">Delete</Button>
+                    <Button className="btn btn-primary">Validate</Button>
                   </Typography>
                 </Box>
               </Modal>

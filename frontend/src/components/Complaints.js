@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 
 function Complaints() {
   return (
-    <div class="container">
+    <div className="container">
       <div>
         <h3>Complaints</h3>
         <Form>
@@ -14,7 +14,7 @@ function Complaints() {
         </Form>
 
         <input
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ align: "center" }}
           type="submit"
           value="Submit"

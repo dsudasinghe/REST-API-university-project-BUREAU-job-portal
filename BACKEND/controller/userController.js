@@ -85,22 +85,26 @@ userController = {
       if (!isMatch) return res.status(400).json({ msg: "Password incorrect." });
 
       const refresh_token = createRefreshToken({ nid: user._id });
-
-      res.cookie("refreshtoken", refresh_token, {
-        httpOnly: true,
-        path: "/user/refresh_token",
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
-      });
-
-      res.json({ msg: "Login success!" });
+      //console.log(refresh_token)
+      // res.cookie("refreshtoken", refresh_token, {
+      //   httpOnly: true,
+      //   path: "/user/refresh_token",
+      //   credentials: 'include',
+      //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7days
+      // }); 
+      console.log(refresh_token)
+      res.json({ msg: "Login success!", refresh_token });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
 
   getAccessToken: (req, res) => {
+    console.log(req.cookies)
+
     try {
       const rf_token = req.cookies.refreshtoken;
+      console.log(rf_token)
       if (!rf_token) return res.status(400).json({ msg: "Please login now!" });
 
       jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
