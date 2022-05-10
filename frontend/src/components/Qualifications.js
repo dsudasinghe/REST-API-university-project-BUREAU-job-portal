@@ -1,35 +1,106 @@
-import {Link} from "react-router-dom";
-import React, {useCallback} from 'react';
-import { textAlign } from "@mui/system";
+import React, { useCallback, useState } from "react";
+import axios from 'axios'
+// import { textAlign } from "@mui/system";
 
-function Qualifications (){
-    return(
-        <div class = "container">
-            <div>
-                <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Qualifications</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Qualifications"></input>
-                </div>
-                <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Longitude</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Longitude"></input>
-                </div>
-                <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Latitude</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Latitude"></input>
-                </div>
-                <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Certificates - Passport, Birth Certificate, CV</label>
-                    <input type="file" multiple class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"></input>
-                </div>
-               
+function Qualifications() {
+  const [qulification, setQualification] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [certificates, setCertificates] = useState([])
 
-                <input class="btn btn-primary" style={{align:"center"}} type="submit" value="Update"></input>
-           
-                
-            </div>
+  function sendData(e) {
+      e.preventDefault()
+    const qualification = {
+        qulification,
+        longitude,
+        latitude,
+        certificates
+    }
+    axios.put("http://localhost:5000/user/update", qualification ).then(()=>{
+      alert("Updated")
+      // setQualification("")
+      // setLongitude("")
+      // setLatitude("")
+      // setCertificates("")
+    }).catch((err)=>{
+      alert(err)
+    })
+  }
+
+  return (
+    <div className="container">
+      <div>
+      <form onSubmit={sendData}>
+
+      
+        <div className="mb-3">
+          <label for="formGroupExampleInput" className="form-label">
+            Qualifications
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="formGroupExampleInput"
+            placeholder="Enter Qualifications"
+            onChange={(e) => {
+              setQualification(e.target.value);
+            }}
+          ></input>
         </div>
-    )
+        <div className="mb-3">
+          <label for="formGroupExampleInput" className="form-label">
+            Longitude
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="formGroupExampleInput"
+            placeholder="Longitude"
+            onChange={(e) => {
+              setLongitude(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label for="formGroupExampleInput" className="form-label">
+            Latitude
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="formGroupExampleInput"
+            placeholder="Latitude"
+            onChange={(e) => {
+              setLatitude(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className="mb-3">
+          <label for="formGroupExampleInput2" className="form-label">
+            Certificates - Passport, Birth Certificate, CV
+          </label>
+          <input
+            type="file"
+            multiple
+            className="form-control"
+            id="formGroupExampleInput2"
+            placeholder="Another input placeholder"
+            onChange={(e) => {
+              setCertificates(e.target.files[0]);
+            }}
+          ></input>
+        </div>
+        <input
+          className="btn btn-primary"
+          style={{ align: "center" }}
+          type="submit"
+          value="Update"
+        ></input>
+</form>
+       
+      </div>
+    </div>
+  );
 }
 
 export default Qualifications;

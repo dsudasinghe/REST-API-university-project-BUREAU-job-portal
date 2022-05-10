@@ -5,7 +5,7 @@ import { Form, FormControl } from "react-bootstrap";
 
 function Contatcts() {
   return (
-    <div class="container">
+    <div className="container">
       <div style={{ paddingtop: "200" }}>
         <Form className="d-flex">
           <FormControl
@@ -14,11 +14,11 @@ function Contatcts() {
             className="me-2"
             aria-label="Search"
           />
-          <Button class="btn btn-primary" variant="outline-success">Search</Button>
+          <Button className="btn btn-primary" variant="outline-success">Search</Button>
         </Form>
       </div>
 
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">Job Seeker Name</th>
