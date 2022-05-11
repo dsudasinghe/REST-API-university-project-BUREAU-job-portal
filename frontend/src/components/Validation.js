@@ -145,11 +145,11 @@ if (!isLoaded) return "Loading...";
 
               </div> </ListGroup.Item>
 
-                      <ListGroup.Item>Profession - </ListGroup.Item>
-                      <ListGroup.Item>Affiliation - </ListGroup.Item>
+                      <ListGroup.Item>Profession - software engineer</ListGroup.Item>
+                      <ListGroup.Item>Affiliation -  </ListGroup.Item>
 
-                      <ListGroup.Item>Qualifications - </ListGroup.Item>
-                      <ListGroup.Item>Certificates -</ListGroup.Item>
+                      <ListGroup.Item>Qualifications - 2 yr</ListGroup.Item>
+                      <ListGroup.Item>Certificates -software engineering university of plymouth</ListGroup.Item>
                     </ListGroup>
                     <Button className="btn btn-primary">Delete</Button>
                     <Button className="btn btn-primary">Validate</Button>
