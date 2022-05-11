@@ -5,6 +5,12 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { ListGroup } from "react-bootstrap";
 import axios from "axios";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 
 
 const style = {
@@ -13,14 +19,35 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 800,
-  height: 500,
+  height: 900,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: '400px',
+  height: '500px'
+};
+const center = {
+  lat: 43.6532,
+  lng: -79.3832,
+};
+
+
+
 
 function Validation() {
+
+
+
+
+
+
+
+
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -42,6 +69,23 @@ function Validation() {
     }
     getUsers();
   }, []);
+
+//google map related-----
+const { isLoaded, loadError } = useLoadScript({
+  googleMapsApiKey: "AIzaSyBheNEtrngM3cbowGS3tLPwoBXlswmmSb0",
+  libraries,
+});
+if (loadError) return "Error";
+if (!isLoaded) return "Loading...";
+//--------
+
+
+
+
+
+
+
+
 
   return (
     <div className="container">
@@ -82,8 +126,25 @@ function Validation() {
                       <ListGroup.Item>User Id - 5555</ListGroup.Item>
                       <ListGroup.Item>Email - user@gmail.com</ListGroup.Item>
                       <ListGroup.Item>Age - 20</ListGroup.Item>
-                      <ListGroup.Item>Adress- Longitude - </ListGroup.Item>
-                      <ListGroup.Item>Adress- Latutude - </ListGroup.Item>
+                      
+                      <ListGroup.Item> <div>
+                
+
+                <GoogleMap
+     mapContainerStyle={mapContainerStyle}
+     zoom={8}
+     center={{
+      lat: 6.8764209,
+      lng: 79}
+    }>
+      
+       <Marker position={{ lat: 6.8764209, lng:79.8}} />
+     </GoogleMap>
+
+
+
+              </div> </ListGroup.Item>
+
                       <ListGroup.Item>Profession - </ListGroup.Item>
                       <ListGroup.Item>Affiliation - </ListGroup.Item>
 
