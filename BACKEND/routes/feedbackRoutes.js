@@ -4,7 +4,7 @@ const auth = require("../middleware/auth");
 
 router.post("/add", auth, feedbackController.addFeedback);
 
-router.put("/reply/:id", feedbackController.sendReply);
+router.put("/reply/:id", admin, feedbackController.sendReply);
 
 router.get("/", feedbackController.getFeedbacks);
 

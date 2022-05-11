@@ -7,11 +7,13 @@ const authRecruiter = require("../middleware/authRecruiter");
 
 router.post("/register", userController.register);
 
+router.post("/add_recruiter", userController.addRecruiter);
+
 router.post("/login", userController.login);
 
-router.get("/refresh_token", userController.getAccessToken);
+//router.get("/refresh_token", userController.getAccessToken);
 
-router.get("/logout", userController.logout);
+//router.get("/logout", userController.logout);
 
 router.get("/all_info", auth, authRecruiter, userController.getAllUserInfo);
 
