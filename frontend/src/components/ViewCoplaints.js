@@ -1,8 +1,10 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import axios from "axios";
+
 import { ListGroup } from "react-bootstrap";
 
 const style = {
@@ -23,8 +25,26 @@ function ViewComplaint() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [complaint, setComplaints] = useState([]);
+
+  useEffect(() => {
+    function getComplaints() {
+      axios
+        .get("http://localhost:5000/")
+        .then((res) => {
+          console.log(res.data);
+          setComplaints(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+    getComplaints();
+  }, []);
+
   return (
     <div className="container">
+      <h1>User Complaints and Feedbacks</h1>
       <table className="table table-hover">
         <thead>
           <tr>
@@ -56,10 +76,10 @@ function ViewComplaint() {
                   >
                     Complaint Details
                   </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                   
-                    
-                  </Typography>
+                  <Typography
+                    id="modal-modal-description"
+                    sx={{ mt: 2 }}
+                  ></Typography>
                 </Box>
               </Modal>
             </td>
