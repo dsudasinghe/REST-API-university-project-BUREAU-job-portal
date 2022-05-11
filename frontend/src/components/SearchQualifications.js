@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Form, FormControl } from "react-bootstrap";
-import axios from "axios";
 
-
-function Contatcts() {
-
-  const [userContacts, setUserContacts] = useState([]);
-
-  useEffect(() => {
-    function getUsers() {
-      axios
-        .get("http://localhost:5000/user/:nid/contact")
-        .then((res) => {
-          console.log(res.data);
-          setUserContacts(res.data);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    }
-    getUsers();
-  }, []);
+function SearchQualifications() {
   return (
     <div className="container">
-      <h1>User Contacts Details</h1>
+      <h1>User Qualifications</h1>
 
       <div style={{ paddingtop: "200" }}>
         <Form className="d-flex">
           <FormControl
             type="search"
-            placeholder="Search"
+            placeholder="Search Qualification"
             className="me-2"
             aria-label="Search"
           />
@@ -64,4 +46,4 @@ function Contatcts() {
   );
 }
 
-export default Contatcts;
+export default SearchQualifications;
